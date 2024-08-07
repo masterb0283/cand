@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAMB UPGRADING</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <div class="general1">
+        <h1>WELCOME TO JAMB UPGRADING PORTAL</h1>
+        <h2>Please input your identity</h2>
+        <input type="text" id="name" placeholder="input your name" required>
+        <input type="email" id="email" placeholder="input your email" required>
+        <input type="number" id="phone" placeholder="input your phone number" required>
+        <button type="submit" onclick="storeData()">CLICK HERE TO CONTINUE</button>
+    </div>
+
+    <script>
+        function storeData() {
+            // Store name in localStorage
+            const name = document.getElementById('name').value;
+            localStorage.setItem('name', name);
+            
+            // Navigate to the second page
+            window.location.href = "result2.html";
+        }
+    </script>
+</body>
+</html>

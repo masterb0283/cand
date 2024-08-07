@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESULT UPGRADING</title>
+    <link rel="stylesheet" href="./result.css">
+</head>
+<body div class="body1">
+    <div class="general4">
+        <div class="general2">
+            <h1>Congratulations!</h1>
+            <p id="displayName"></p>
+        </div>
+        <div class="general3">
+            <div><b id="countdown">We are sorry to inform you that the result upgrading software will not be available in the next<br><span></span> </b></div>
+            <div><h2>if you do not want to lose the chance you have to upgrade your result, <br>please make sure you make your payment before the deadline <br>so that your result can  successfully be upgraded </h2></div>
+           <div> <h3>click on the button below to contact the admin for your payment right now</h3>   </div>
+           <div> <a href="https://wa.me/message/RU74TJXEJQZHF1" target="_blank"><button>contact Admin</button></a></div>
+        
+        </div>
+
+
+    </div>
+
+
+    <script>
+        // Retrieve and display the name from localStorage
+        const name = localStorage.getItem('name');
+        document.getElementById('displayName').textContent = "Dear, " + name + "!";
+
+        // Calculate the time for the next Friday
+        function getNextFriday() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7; // Calculate days until Friday
+            const nextFriday = new Date(now);
+            nextFriday.setDate(now.getDate() + daysUntilFriday);
+            nextFriday.setHours(0, 0, 0, 0); // Set time to midnight of that Friday
+            return nextFriday.getTime();
+        }
+
+        const countdownElement = document.getElementById('countdown');
+        const endTime = getNextFriday();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = endTime - now;
+
+            if (timeLeft >= 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `We are sorry to inform you that the result upgrading software will not be available in the next ${days}d ${hours}h ${minutes}m ${seconds}s.`;
+            } else {
+                countdownElement.textContent = "The result upgrading software is no longer available.";
+            }
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
